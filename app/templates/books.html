@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<ul>
+    {% for book in allTitles %}
+        <li>
+            <a href="{% url 'book_detail' book.id %}">{{ book.title }}</a>
+            <!-- Add Buy button -->
+            <form action="{% url 'buy_book' book.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Buy</button>
+            </form>
+        </li>
+    {% empty %}
+        <li>No books available.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'add_book' %}"><button>Add Book</button></a>
+<a href="{% url 'purchased_books' %}"><button>View Purchased Books</button></a>
+
+{% endblock %}

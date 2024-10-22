@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+<p><strong>Name:</strong> {{ publisher.name }}</p>
+<p><strong>Email:</strong> {{ publisher.city }}</p>
+<p><strong>Country:</strong> {{ publisher.country }}</p>
+<p><strong>Website:</strong> {{ publisher.website }}</p>
+    
+<a href="{% url 'publisher_edit' publisher.id %}" class="btn btn-primary">Editar</a>
+<a href="{% url 'publishers' %}">Back to all publishers</a>
+
+{% endblock %}

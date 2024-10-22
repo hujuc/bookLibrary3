@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Book search</h2>
+
+{% if error %}
+    <p>ERROR: Insert a query term.</p>
+{% endif %}
+
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Search">
+</form>
+
+{% endblock %}

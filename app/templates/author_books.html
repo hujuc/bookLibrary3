@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+<p><strong>Name:</strong> {{ author.name }}</p>
+
+<p><strong>Books:</strong></p>
+<ul>
+    {% for book in allBooks %}
+        <li>{{ book.title }}</li>
+    {% empty %}
+        <li>No books available for this author.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'authors' %}">Back to all authors</a>
+
+{% endblock %}

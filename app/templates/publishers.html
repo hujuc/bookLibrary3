@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<ul>
+    {% for publisher in allPublishers %}
+        <li><a href="{% url 'publisher_detail' publisher.id %}">{{ publisher.name }}</a> - <a href="{% url 'publisher_authors' publisher.id %}">Authors</a></li>
+    {% empty %}
+        <li>No publishers available.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'add_publisher' %}"><button>Add Publishers</button></a>
+    
+{% endblock %}

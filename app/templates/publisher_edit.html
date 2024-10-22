@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Editar Editora</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_name">Nome:</label>
+        <input type="text" id="id_name" name="name" value="{{ publisher.name }}" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="id_city">Cidade:</label>
+        <input type="text" id="id_city" name="city" value="{{ publisher.city }}" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="id_country">País:</label>
+        <input type="text" id="id_country" name="country" value="{{ publisher.country }}" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="id_website">Website:</label>
+        <input type="url" id="id_website" name="website" value="{{ publisher.website }}" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="{% url 'publishers' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}

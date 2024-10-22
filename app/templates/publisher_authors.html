@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+<p><strong>Name:</strong> {{ publisher.name }}</p>
+    
+<p><strong>Authors:</strong></p>
+<ul>
+    {% for author in allAuthors %}
+        <li>{{ author.name }}</li>
+    {% empty %}
+        <li>No authors available for this publisher.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'publishers' %}">Back to all publishers</a>
+
+{% endblock %}

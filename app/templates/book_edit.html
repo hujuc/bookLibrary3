@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Editar Livro</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_title">Título:</label>
+        <input type="text" id="id_title" name="title" value="{{ book.title }}" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="id_date">Data:</label>
+        <input type="date" id="id_date" name="date" value="{{ book.date|date:"Y-m-d" }}" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="id_authors">Autores:</label>
+        <select id="id_authors" name="authors" multiple class="form-control" required>
+            {% for author in authors %}
+                <option value="{{ author.id }}" {% if author in book.authors.all %}selected{% endif %}>
+                    {{ author.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="id_publisher">Editora:</label>
+        <select id="id_publisher" name="publisher" class="form-control" required>
+            {% for publisher in publishers %}
+                <option value="{{ publisher.id }}" {% if publisher == book.publisher %}selected{% endif %}>
+                    {{ publisher.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="{% url 'books' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock %}

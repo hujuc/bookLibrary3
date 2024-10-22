@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+
+<p><strong>Name:</strong> {{ author.name }}</p>
+<p><strong>Email:</strong> {{ author.email }}</p>
+
+<a href="{% url 'edit_author' author.id %}" class="btn btn-primary">Editar</a>
+<a href="{% url 'authors' %}">Back to all authors</a>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<ul>
+    {% for author in allTitles %}
+        <li><a href="{% url 'author_detail' author.id %}">{{ author.name }}</a> - <a href="{% url 'author_books' author.id %}">Books</a></li>
+    {% empty %}
+        <li>No authors available.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'add_author' %}"><button>Add Edithor</button></a>
+
+{% endblock %}
